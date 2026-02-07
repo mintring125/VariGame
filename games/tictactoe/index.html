@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>틱택토 - 동물의 숲</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../assets/victory-video.css">
+    <link rel="stylesheet" href="../../assets/fullscreen.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="home-btn" onclick="location.href='../../index.html'">🏠 홈</button>
+            <h1>🎮 틱택토 🎮</h1>
+        </header>
+
+        <div class="game-area">
+            <!-- 플레이어 정보 -->
+            <div class="players-section">
+                <div class="player player1 active" id="player1">
+                    <img src="../../assets/celeste.png" alt="부엉이" class="player-avatar">
+                    <div class="player-info">
+                        <h3>부엉이 🦉</h3>
+                        <div class="player-symbol">⭕</div>
+                    </div>
+                </div>
+
+                <div class="vs-text">VS</div>
+
+                <div class="player player2" id="player2">
+                    <img src="../../assets/sally.png" alt="샐리" class="player-avatar">
+                    <div class="player-info">
+                        <h3>샐리 🐿️</h3>
+                        <div class="player-symbol">❌</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 턴 표시 -->
+            <div class="turn-indicator" id="turnIndicator">
+                <span id="currentPlayer">부엉이</span>의 차례입니다! ⭕
+            </div>
+
+            <!-- 게임 보드 -->
+            <div class="board" id="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+
+            <!-- 다시 시작 버튼 -->
+            <button class="restart-btn" id="restartBtn">🔄 다시 시작</button>
+
+            <!-- 게임 방법 -->
+            <div class="instructions">
+                <h3>🎯 게임 방법</h3>
+                <ul>
+                    <li>부엉이 🦉는 ⭕를 놓습니다 (빨간색)</li>
+                    <li>샐리 🐿️는 ❌를 놓습니다 (노란색)</li>
+                    <li>번갈아 가며 빈 칸을 클릭하세요</li>
+                    <li>가로, 세로, 대각선 3개를 연결하면 승리! 🎉</li>
+                    <li>모든 칸이 차면 무승부입니다</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 승리 모달 -->
+    <div class="victory-modal" id="victoryModal">
+        <div class="modal-content">
+            <div class="confetti" id="confetti"></div>
+            <h2 id="winnerText">🎉 승리! 🎉</h2>
+            <p id="winnerMessage"></p>
+            <button class="modal-btn" onclick="restartGame()">다시 하기</button>
+            <button class="modal-btn home-modal-btn" onclick="location.href='../../index.html'">홈으로</button>
+        </div>
+    </div>
+
+    <script src="../../assets/victory-video.js"></script>
+    <script src="game.js"></script>
+    <script src="../../assets/fullscreen.js"></script>
+</body>
+</html>

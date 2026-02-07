@@ -1,0 +1,464 @@
+:root {
+    --ac-green: #7BC96F;
+    --ac-cream: #FFF8DC;
+    --ac-brown: #8B6914;
+    --ac-wood: #D4A574;
+    --ac-blue: #87CEEB;
+    --ac-mint: #98D8C8;
+    --player1-color: #FF6B6B;
+    --player2-color: #FFD93D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Jua', sans-serif;
+    background: linear-gradient(135deg, #87CEEB 0%, #98D8C8 50%, #7BC96F 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+h1 {
+    color: var(--ac-brown);
+    font-size: 3rem;
+    text-shadow: 3px 3px 0 rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+}
+
+.home-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 4px solid var(--ac-brown);
+    border-radius: 20px;
+    padding: 12px 24px;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 var(--ac-brown);
+}
+
+.home-btn:hover {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 0 var(--ac-brown);
+}
+
+.home-btn:active {
+    transform: translateY(-50%) translateY(2px);
+    box-shadow: 0 2px 0 var(--ac-brown);
+}
+
+.game-area {
+    background: white;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 5px solid var(--ac-wood);
+}
+
+/* 플레이어 섹션 */
+.players-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--ac-cream);
+    padding: 20px;
+    border-radius: 20px;
+    border: 4px solid transparent;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.player.active {
+    border-color: var(--ac-green);
+    box-shadow: 0 0 20px rgba(123, 201, 111, 0.5);
+    transform: scale(1.05);
+}
+
+.player-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.player-info {
+    text-align: center;
+}
+
+.player-info h3 {
+    color: var(--ac-brown);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.player-symbol {
+    font-size: 2.5rem;
+}
+
+.player1 .player-symbol {
+    color: var(--player1-color);
+}
+
+.player2 .player-symbol {
+    color: var(--player2-color);
+}
+
+.vs-text {
+    font-size: 2rem;
+    color: var(--ac-brown);
+    font-weight: bold;
+}
+
+/* 턴 표시 */
+.turn-indicator {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--ac-brown);
+    margin-bottom: 30px;
+    padding: 15px;
+    background: var(--ac-cream);
+    border-radius: 20px;
+    border: 4px solid var(--ac-green);
+}
+
+#currentPlayer {
+    font-weight: bold;
+    color: var(--ac-green);
+}
+
+/* 게임 보드 */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    background: var(--ac-wood);
+    border-radius: 20px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    background: white;
+    border: 5px solid var(--ac-brown);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 var(--ac-brown);
+    min-height: 100px;
+}
+
+.cell:hover:not(.taken) {
+    background: var(--ac-cream);
+    transform: translateY(-5px);
+    box-shadow: 0 9px 0 var(--ac-brown);
+}
+
+.cell:active:not(.taken) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--ac-brown);
+}
+
+.cell.taken {
+    cursor: not-allowed;
+}
+
+.cell.player1 {
+    color: var(--player1-color);
+}
+
+.cell.player2 {
+    color: var(--player2-color);
+}
+
+.cell.winning {
+    animation: winPulse 0.6s ease-in-out infinite;
+    background: linear-gradient(135deg, #FFD93D 0%, #FF6B6B 100%);
+}
+
+@keyframes winPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* 다시 시작 버튼 */
+.restart-btn {
+    display: block;
+    margin: 0 auto 30px;
+    background: var(--ac-green);
+    color: white;
+    border: 4px solid var(--ac-brown);
+    border-radius: 20px;
+    padding: 15px 40px;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 var(--ac-brown);
+}
+
+.restart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 var(--ac-brown);
+}
+
+.restart-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 0 var(--ac-brown);
+}
+
+/* 게임 방법 */
+.instructions {
+    background: var(--ac-cream);
+    padding: 25px;
+    border-radius: 20px;
+    border: 4px solid var(--ac-wood);
+}
+
+.instructions h3 {
+    color: var(--ac-brown);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.instructions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.instructions li {
+    color: var(--ac-brown);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.instructions li:before {
+    content: '🌟';
+    position: absolute;
+    left: 0;
+}
+
+/* 승리 모달 */
+.victory-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.victory-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 500px;
+    border: 6px solid var(--ac-green);
+    position: relative;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+}
+
+#winnerText {
+    color: var(--ac-brown);
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#winnerMessage {
+    color: var(--ac-brown);
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.modal-btn {
+    background: var(--ac-green);
+    color: white;
+    border: 4px solid var(--ac-brown);
+    border-radius: 20px;
+    padding: 15px 40px;
+    font-family: 'Jua', sans-serif;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 var(--ac-brown);
+}
+
+.modal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 var(--ac-brown);
+}
+
+.modal-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 0 var(--ac-brown);
+}
+
+.home-modal-btn {
+    background: var(--ac-wood);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .home-btn {
+        position: static;
+        transform: none;
+        margin-bottom: 15px;
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .home-btn:hover {
+        transform: scale(1.05);
+    }
+
+    .home-btn:active {
+        transform: translateY(2px);
+    }
+
+    header {
+        margin-bottom: 20px;
+    }
+
+    .players-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .player {
+        min-width: auto;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .vs-text {
+        font-size: 1.5rem;
+    }
+
+    .player-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .player-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .player-symbol {
+        font-size: 2rem;
+    }
+
+    .turn-indicator {
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+
+    .board {
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .cell {
+        font-size: 3rem;
+        min-height: 80px;
+    }
+
+    .restart-btn {
+        font-size: 1.2rem;
+        padding: 12px 30px;
+    }
+
+    .instructions h3 {
+        font-size: 1.5rem;
+    }
+
+    .instructions li {
+        font-size: 1rem;
+    }
+
+    #winnerText {
+        font-size: 2rem;
+    }
+
+    #winnerMessage {
+        font-size: 1.3rem;
+    }
+
+    .modal-content {
+        padding: 30px;
+        margin: 20px;
+    }
+
+    .modal-btn {
+        font-size: 1.2rem;
+        padding: 12px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-area {
+        padding: 20px;
+    }
+
+    .cell {
+        font-size: 2.5rem;
+        min-height: 70px;
+    }
+}

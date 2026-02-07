@@ -1,0 +1,199 @@
+/* ===== 전체화면 버튼 ===== */
+.fullscreen-btn {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 9999;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid #D4A574;
+    background: linear-gradient(145deg, #FFF8DC, #F5E6C8);
+    color: #8B6914;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-family: 'Jua', sans-serif;
+    line-height: 1;
+    padding: 0;
+}
+
+.fullscreen-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    border-color: #7BC96F;
+}
+
+.fullscreen-btn:active {
+    transform: scale(0.95);
+}
+
+.fullscreen-btn.is-fullscreen {
+    background: linear-gradient(145deg, #7BC96F, #5BA85A);
+    color: white;
+    border-color: #5BA85A;
+}
+
+/* ===== 세로모드(Portrait) 캐릭터 배치 ===== */
+/*
+ * 세로모드에서 두 캐릭터를 한 줄에 배치하여 게임판 공간 확보
+ * Pattern A: players-container (othello, connect4, gomoku, memory, dots-and-boxes)
+ * 기존: player1 | board | player2 (가로)
+ * 세로모드: [player1 | player2] (한 줄) + board (아래)
+ */
+@media (orientation: portrait), (max-width: 800px) {
+    /* Pattern A: players-container 레이아웃 변경 (Grid 방식) */
+    .players-container {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 10px !important;
+        align-items: start !important;
+    }
+
+    .players-container .player-1,
+    .players-container .player.player-1,
+    .players-container > .player:first-child {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+    }
+
+    .players-container .player-2,
+    .players-container .player.player-2,
+    .players-container > .player:last-child {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+    }
+
+    .players-container .board-wrapper {
+        grid-column: 1 / -1 !important;
+        grid-row: 2 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: unset !important;
+    }
+
+    .players-container .player {
+        min-width: auto !important;
+        padding: 10px !important;
+    }
+
+    .players-container .player-avatar {
+        width: 50px !important;
+        height: 50px !important;
+        margin: 0 auto 5px !important;
+    }
+
+    .players-container .player-info h2 {
+        font-size: 1rem !important;
+        margin-bottom: 2px !important;
+    }
+
+    .players-container .turn-indicator {
+        font-size: 0.75rem !important;
+        padding: 4px 8px !important;
+        margin-top: 4px !important;
+    }
+
+    /* Pattern B: .players (checkers, snakes-and-ladders, animal-quiz) */
+    .players {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 15px !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .players .player {
+        flex: 1 !important;
+        max-width: 180px !important;
+    }
+
+    .players .player img,
+    .players .player .player-avatar {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .players .player-avatar img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* Pattern C: .players-section (tictactoe) */
+    .players-section {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 10px !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .players-section .player {
+        flex: 1 !important;
+    }
+
+    .players-section .player-avatar {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .players-section .vs-text {
+        font-size: 1rem !important;
+    }
+
+    /* Pattern D: .scoreboard (treasure-hunt) */
+    .scoreboard {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .scoreboard .player {
+        flex: 1 !important;
+    }
+
+    .scoreboard .player img {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    /* Pattern E: .game-area for bingo (two boards side by side) */
+    .game-area .player-section .player-header {
+        flex-direction: row !important;
+        gap: 8px !important;
+    }
+
+    .game-area .player-section .player-avatar {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    /* 일반 축소 */
+    .title, h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .rules-card, .game-info-card, .info-card, .instructions-card, .instructions {
+        padding: 8px 12px !important;
+        margin-top: 10px !important;
+    }
+
+    .rules-card h3, .game-info-card h3, .info-card h2, .info-card h3 {
+        font-size: 0.9rem !important;
+        margin-bottom: 4px !important;
+    }
+
+    .rules-card p, .rules-card li,
+    .game-info-card p, .game-info-card li,
+    .info-card p, .info-card li {
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
+    }
+}

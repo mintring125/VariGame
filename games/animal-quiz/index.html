@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물 퀴즈 배틀 - 게임 모음</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/victory-video.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../assets/fullscreen.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">
+            <button class="home-btn" onclick="location.href='../../index.html'">🏠 홈</button>
+            <h1>🌳 동물 퀴즈 배틀 🌳</h1>
+            <button class="restart-btn" onclick="location.reload()">🔄 다시</button>
+        </div>
+
+        <div class="instructions-card">
+            <h2>🎮 게임 방법</h2>
+            <ol>
+                <li>부엉이와 샐리가 번갈아가며 OX 퀴즈에 도전해요!</li>
+                <li>총 10문제를 풀고, 더 많이 맞춘 사람이 이겨요!</li>
+                <li>정답을 맞추면 1점을 얻어요 🎉</li>
+                <li>동점이면 서든데스로 승부를 가려요! ⚡</li>
+            </ol>
+        </div>
+
+        <div class="players">
+            <div class="player player1">
+                <img src="../../assets/celeste.png" alt="부엉이">
+                <div class="player-name">부엉이</div>
+                <div class="player-score" id="score1">0점</div>
+            </div>
+            <div class="vs">VS</div>
+            <div class="player player2">
+                <img src="../../assets/sally.png" alt="샐리">
+                <div class="player-name">샐리</div>
+                <div class="player-score" id="score2">0점</div>
+            </div>
+        </div>
+
+        <div class="game-info">
+            <div class="round-info">
+                <span id="currentRound">1</span>/10 문제
+            </div>
+            <div class="turn-info">
+                <span id="currentPlayer">부엉이</span>의 차례!
+            </div>
+        </div>
+
+        <div class="quiz-card">
+            <div class="quiz-emoji" id="quizEmoji">🐋</div>
+            <div class="quiz-question" id="quizQuestion">퀴즈를 불러오는 중...</div>
+        </div>
+
+        <div class="answer-buttons">
+            <button class="answer-btn o-btn" onclick="checkAnswer(true)">
+                <span class="btn-symbol">O</span>
+                <span class="btn-text">맞아요</span>
+            </button>
+            <button class="answer-btn x-btn" onclick="checkAnswer(false)">
+                <span class="btn-symbol">X</span>
+                <span class="btn-text">틀려요</span>
+            </button>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <div class="victory-modal" id="victoryModal">
+        <div class="victory-content">
+            <h2 id="victoryTitle">🎉 승리! 🎉</h2>
+            <div class="final-scores" id="finalScores"></div>
+            <button class="play-again-btn" onclick="location.reload()">다시 하기</button>
+            <button class="home-btn-modal" onclick="location.href='../../index.html'">홈으로</button>
+        </div>
+    </div>
+
+    <script src="../../assets/victory-video.js"></script>
+    <script src="game.js"></script>
+    <script src="../../assets/fullscreen.js"></script>
+</body>
+</html>

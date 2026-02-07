@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보물찾기 - 동물의 숲</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/victory-video.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../assets/fullscreen.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="home-btn" onclick="location.href='../../index.html'">🏠 홈</button>
+            <h1>🏝️ 보물찾기 🏝️</h1>
+            <button class="restart-btn" onclick="restartGame()">🔄 다시 시작</button>
+        </header>
+
+        <!-- 게임 방법 설명 카드 -->
+        <div class="info-card">
+            <h2>🎮 게임 방법</h2>
+            <p>번갈아가며 타일을 클릭해서 보물을 찾아보세요!</p>
+            <div class="treasure-info">
+                <span>🍎 사과 = 1점</span>
+                <span>🍊 오렌지 = 1점</span>
+                <span>⭐ 별 = 2점</span>
+                <span>💎 다이아몬드 = 3점</span>
+                <span>👑 왕관 = 5점</span>
+                <span>💣 폭탄 = -2점</span>
+            </div>
+        </div>
+
+        <!-- 점수판 -->
+        <div class="scoreboard">
+            <div class="player player1">
+                <img src="../../assets/celeste.png" alt="부엉이">
+                <div class="player-info">
+                    <div class="player-name">부엉이</div>
+                    <div class="score" id="score1">0점</div>
+                </div>
+            </div>
+            <div class="turn-indicator" id="turnIndicator">
+                부엉이 차례
+            </div>
+            <div class="player player2">
+                <img src="../../assets/sally.png" alt="샐리">
+                <div class="player-info">
+                    <div class="player-name">샐리</div>
+                    <div class="score" id="score2">0점</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게임 보드 -->
+        <div class="game-board" id="gameBoard"></div>
+    </div>
+
+    <!-- 승리 모달 -->
+    <div id="victoryModal" class="modal">
+        <div class="modal-content">
+            <h2 id="winnerText"></h2>
+            <p id="finalScore"></p>
+            <button class="play-again-btn" onclick="restartGame()">다시 하기</button>
+            <button class="home-btn-modal" onclick="location.href='../../index.html'">홈으로</button>
+        </div>
+    </div>
+
+    <script src="../../assets/victory-video.js"></script>
+    <script src="game.js"></script>
+    <script src="../../assets/fullscreen.js"></script>
+</body>
+</html>
