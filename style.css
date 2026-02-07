@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 :root {
-    /* Animal Crossing Theme Colors */
+    /* Animal Crossing Theme Colors - Light Mode */
     --ac-green: #7BC96F;
     --ac-green-dark: #5BA85A;
     --ac-cream: #FFF8DC;
@@ -20,6 +20,52 @@
     /* UI Colors */
     --shadow-color: rgba(0, 0, 0, 0.15);
     --shadow-hover: rgba(0, 0, 0, 0.25);
+
+    /* Background */
+    --bg-gradient-start: #87CEEB;
+    --bg-gradient-mid: #98D8C8;
+    --bg-gradient-end: #7BC96F;
+
+    /* Cards & Containers */
+    --card-bg: linear-gradient(145deg, #FFFFFF 0%, var(--ac-cream) 100%);
+    --header-bg: linear-gradient(145deg, var(--ac-cream) 0%, var(--ac-cream-dark) 100%);
+    --text-primary: var(--ac-brown);
+    --text-secondary: #666;
+}
+
+/* 다크모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Dark Mode Colors */
+        --ac-green: #8FD988;
+        --ac-green-dark: #6BBF60;
+        --ac-cream: #2a2a3e;
+        --ac-cream-dark: #1e1e2e;
+        --ac-brown: #E8D5A3;
+        --ac-wood: #6B5344;
+        --ac-wood-dark: #4A3A30;
+        --ac-sky: #4A6FA5;
+        --ac-pink: #D4849A;
+
+        /* Player Colors - 더 밝게 */
+        --player1-color: #FF6B6B;
+        --player2-color: #FFE66D;
+
+        /* UI Colors */
+        --shadow-color: rgba(0, 0, 0, 0.4);
+        --shadow-hover: rgba(0, 0, 0, 0.6);
+
+        /* Background - 어두운 그라데이션 */
+        --bg-gradient-start: #1a1a2e;
+        --bg-gradient-mid: #16213e;
+        --bg-gradient-end: #0f3460;
+
+        /* Cards & Containers */
+        --card-bg: linear-gradient(145deg, #2a2a3e 0%, #1e1e2e 100%);
+        --header-bg: linear-gradient(145deg, #2a2a3e 0%, #1e1e2e 100%);
+        --text-primary: #E8D5A3;
+        --text-secondary: #a0a0b0;
+    }
 }
 
 * {
@@ -30,7 +76,7 @@
 
 body {
     font-family: 'Jua', sans-serif;
-    background: linear-gradient(135deg, #87CEEB 0%, #98D8C8 50%, #7BC96F 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -43,7 +89,7 @@ body {
 
 /* Header Styles */
 .header {
-    background: linear-gradient(145deg, var(--ac-cream) 0%, var(--ac-cream-dark) 100%);
+    background: var(--header-bg);
     border-radius: 30px;
     padding: 30px;
     margin-bottom: 30px;
@@ -91,14 +137,14 @@ body {
 
 .header h1 {
     font-size: 2.5rem;
-    color: var(--ac-brown);
+    color: var(--text-primary);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
 }
 
 .subtitle {
     font-size: 1.2rem;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 /* Games Grid */
@@ -111,7 +157,7 @@ body {
 
 /* Game Card */
 .game-card {
-    background: linear-gradient(145deg, #FFFFFF 0%, var(--ac-cream) 100%);
+    background: var(--card-bg);
     border-radius: 20px;
     padding: 25px;
     text-decoration: none;
@@ -170,13 +216,13 @@ body {
 
 .game-info h2 {
     font-size: 1.4rem;
-    color: var(--ac-brown);
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 
 .game-info p {
     font-size: 0.95rem;
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.4;
 }
 
@@ -195,7 +241,7 @@ body {
 
 /* Footer */
 .footer {
-    background: linear-gradient(145deg, var(--ac-cream) 0%, var(--ac-cream-dark) 100%);
+    background: var(--header-bg);
     border-radius: 20px;
     padding: 25px;
     text-align: center;
@@ -204,14 +250,14 @@ body {
 }
 
 .footer p {
-    color: var(--ac-brown);
+    color: var(--text-primary);
     font-size: 1.1rem;
 }
 
 .footer-small {
     margin-top: 10px;
     font-size: 0.9rem !important;
-    color: #888 !important;
+    color: var(--text-secondary) !important;
 }
 
 /* Decorations */

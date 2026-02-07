@@ -3,11 +3,85 @@
     --ac-green: #7BC96F;
     --ac-green-dark: #5BA85A;
     --ac-cream: #FFF8DC;
+    --ac-cream-dark: #F5E6C8;
     --ac-brown: #8B6914;
     --ac-wood: #D4A574;
     --celeste-black: #2C2C2C;
     --sally-white: #FAFAFA;
     --board-color: #DEB887;
+    --board-line: #8B7355;
+
+    /* Background */
+    --bg-gradient-start: #87CEEB;
+    --bg-gradient-mid: #98D8C8;
+    --bg-gradient-end: #7BC96F;
+
+    /* Text */
+    --text-primary: #8B6914;
+    --text-secondary: #555;
+
+    /* Container */
+    --container-bg: linear-gradient(180deg, #FFF8DC 0%, #F5E6C8 100%);
+    --player-bg: linear-gradient(145deg, #FFFFFF 0%, #F0E6D2 100%);
+
+    /* Move indicators */
+    --valid-move-color: rgba(123, 201, 111, 0.6);
+    --hover-glow: rgba(123, 201, 111, 0.8);
+}
+
+/* 다크모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ac-green: #8FD988;
+        --ac-green-dark: #6BBF60;
+        --ac-cream: #2a2a3e;
+        --ac-cream-dark: #1e1e2e;
+        --ac-brown: #E8D5A3;
+        --ac-wood: #6B5344;
+        --celeste-black: #1a1a1a;
+        --sally-white: #F0F0F0;
+        --board-color: #5D4E37;
+        --board-line: #3a3a4a;
+
+        /* Background */
+        --bg-gradient-start: #1a1a2e;
+        --bg-gradient-mid: #16213e;
+        --bg-gradient-end: #0f3460;
+
+        /* Text */
+        --text-primary: #E8D5A3;
+        --text-secondary: #a0a0b0;
+
+        /* Container */
+        --container-bg: linear-gradient(180deg, #2a2a3e 0%, #1e1e2e 100%);
+        --player-bg: linear-gradient(145deg, #3a3a4e 0%, #2a2a3e 100%);
+
+        /* Move indicators - 더 밝고 눈에 띄게 */
+        --valid-move-color: rgba(0, 255, 150, 0.7);
+        --hover-glow: rgba(0, 255, 150, 1);
+    }
+
+    /* 다크모드에서 기물 강조 */
+    .cell .stone.black {
+        background: radial-gradient(circle at 30% 30%, #666 0%, #1a1a1a 70%);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5),
+            0 0 15px rgba(100, 100, 255, 0.4);
+        border: 2px solid rgba(150, 150, 255, 0.5);
+    }
+
+    .cell .stone.white {
+        background: radial-gradient(circle at 30% 30%, #FFF 0%, #DDD 70%);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3),
+            0 0 15px rgba(255, 200, 100, 0.5);
+        border: 2px solid rgba(255, 220, 150, 0.6);
+    }
+
+    /* 다크모드에서 호버 효과 강화 */
+    .cell:hover::before,
+    .cell:hover::after {
+        background: var(--hover-glow) !important;
+        box-shadow: 0 0 10px var(--hover-glow);
+    }
 }
 
 * {
@@ -18,7 +92,7 @@
 
 body {
     font-family: 'Jua', sans-serif;
-    background: linear-gradient(135deg, #87CEEB 0%, #98D8C8 50%, #7BC96F 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -27,7 +101,7 @@ body {
 }
 
 .game-container {
-    background: linear-gradient(180deg, #FFF8DC 0%, #F5E6C8 100%);
+    background: var(--container-bg);
     border-radius: 30px;
     padding: 25px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -77,7 +151,7 @@ body {
 .title {
     text-align: center;
     font-size: 2.5rem;
-    color: var(--ac-brown);
+    color: var(--text-primary);
     margin-bottom: 20px;
 }
 
@@ -90,7 +164,7 @@ body {
 }
 
 .player {
-    background: linear-gradient(145deg, #FFFFFF 0%, #F0E6D2 100%);
+    background: var(--player-bg);
     border-radius: 20px;
     padding: 15px;
     text-align: center;
@@ -124,7 +198,7 @@ body {
 
 .player-info h2 {
     font-size: 1.2rem;
-    color: var(--ac-brown);
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 

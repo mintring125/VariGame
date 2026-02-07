@@ -3,6 +3,7 @@
     --ac-green: #7BC96F;
     --ac-green-dark: #5BA85A;
     --ac-cream: #FFF8DC;
+    --ac-cream-dark: #F5E6C8;
     --ac-brown: #8B6914;
     --ac-wood: #D4A574;
     --ac-wood-dark: #B8956E;
@@ -13,6 +14,110 @@
     --board-main: #DCB35C;
     --board-dark: #C9A227;
     --board-border: #8B6914;
+
+    /* Background */
+    --bg-gradient-start: #87CEEB;
+    --bg-gradient-mid: #98D8C8;
+    --bg-gradient-end: #7BC96F;
+
+    /* Text */
+    --text-primary: #8B6914;
+    --text-secondary: #666;
+
+    /* Container */
+    --container-bg: linear-gradient(180deg, #FFF8DC 0%, #F5E6C8 100%);
+    --player-bg: linear-gradient(145deg, #FFFFFF 0%, #F0E6D2 100%);
+
+    /* Move indicators */
+    --valid-move-bg: linear-gradient(135deg, #98FB98 0%, #7CFC00 100%);
+    --valid-move-dot: rgba(255, 255, 255, 0.6);
+}
+
+/* 다크모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ac-green: #8FD988;
+        --ac-green-dark: #6BBF60;
+        --ac-cream: #2a2a3e;
+        --ac-cream-dark: #1e1e2e;
+        --ac-brown: #E8D5A3;
+        --ac-wood: #6B5344;
+        --ac-wood-dark: #4A3A30;
+        --ac-sky: #4A6FA5;
+        --ac-pink: #D4849A;
+        --celeste-red: #FF6B6B;
+        --sally-yellow: #FFE66D;
+        --board-main: #4A4030;
+        --board-dark: #3A3020;
+        --board-border: #5D4E37;
+
+        /* Background */
+        --bg-gradient-start: #1a1a2e;
+        --bg-gradient-mid: #16213e;
+        --bg-gradient-end: #0f3460;
+
+        /* Text */
+        --text-primary: #E8D5A3;
+        --text-secondary: #a0a0b0;
+
+        /* Container */
+        --container-bg: linear-gradient(180deg, #2a2a3e 0%, #1e1e2e 100%);
+        --player-bg: linear-gradient(145deg, #3a3a4e 0%, #2a2a3e 100%);
+
+        /* Move indicators - 더 밝고 눈에 띄게 */
+        --valid-move-bg: linear-gradient(135deg, rgba(0, 255, 150, 0.6) 0%, rgba(0, 200, 100, 0.6) 100%);
+        --valid-move-dot: rgba(0, 255, 150, 0.9);
+    }
+
+    /* 다크모드에서 기물 강조 */
+    .disk.celeste {
+        background: radial-gradient(circle at 30% 30%, #666 0%, #1a1a1a 70%);
+        border: 3px solid #444;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5),
+            inset 0 2px 4px rgba(255, 255, 255, 0.2),
+            0 0 20px rgba(100, 180, 255, 0.4);
+    }
+
+    .disk.sally {
+        background: radial-gradient(circle at 30% 30%, #fff 0%, #e0e0e0 70%);
+        border: 3px solid #bbb;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4),
+            inset 0 2px 4px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(255, 220, 100, 0.5);
+    }
+
+    /* 다크모드에서 유효한 이동 위치 강화 */
+    .cell.valid-move {
+        background: var(--valid-move-bg) !important;
+        box-shadow: inset 0 0 20px rgba(0, 255, 150, 0.5);
+    }
+
+    .cell.valid-move::after {
+        content: '';
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        background: var(--valid-move-dot);
+        border-radius: 50%;
+        border: 2px solid rgba(0, 255, 150, 0.8);
+        animation: pulse-hint-dark 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse-hint-dark {
+
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 0.6;
+            box-shadow: 0 0 10px rgba(0, 255, 150, 0.5);
+        }
+
+        50% {
+            transform: scale(1.3);
+            opacity: 1;
+            box-shadow: 0 0 20px rgba(0, 255, 150, 0.8);
+        }
+    }
 }
 
 * {
@@ -23,7 +128,7 @@
 
 body {
     font-family: 'Jua', sans-serif;
-    background: linear-gradient(135deg, #87CEEB 0%, #98D8C8 50%, #7BC96F 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -33,7 +138,7 @@ body {
 }
 
 .game-container {
-    background: linear-gradient(180deg, #FFF8DC 0%, #F5E6C8 100%);
+    background: var(--container-bg);
     border-radius: 30px;
     padding: 30px;
     box-shadow:
@@ -111,7 +216,7 @@ body {
 .title {
     text-align: center;
     font-size: 2.5rem;
-    color: var(--ac-brown);
+    color: var(--text-primary);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 25px;
     animation: pulse 2s ease-in-out infinite;
@@ -138,7 +243,7 @@ body {
 }
 
 .player {
-    background: linear-gradient(145deg, #FFFFFF 0%, #F0E6D2 100%);
+    background: var(--player-bg);
     border-radius: 20px;
     padding: 20px;
     text-align: center;
@@ -179,7 +284,7 @@ body {
 
 .player-info h2 {
     font-size: 1.5rem;
-    color: var(--ac-brown);
+    color: var(--text-primary);
     margin-bottom: 10px;
 }
 
@@ -190,7 +295,7 @@ body {
     gap: 10px;
     font-size: 1.8rem;
     font-weight: bold;
-    color: var(--ac-brown);
+    color: var(--text-primary);
 }
 
 .piece {
