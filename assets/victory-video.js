@@ -23,7 +23,7 @@ function showVictoryVideo(winner) {
         <div class="victory-video-backdrop"></div>
         <div class="victory-video-content">
             <h2 class="victory-video-title">🎉 축하합니다! 🎉</h2>
-            <video id="victoryVideo" autoplay playsinline class="victory-video">
+            <video id="victoryVideo" autoplay muted playsinline class="victory-video">
                 <source src="${videoSrc}" type="video/mp4">
             </video>
             <button class="victory-video-close" onclick="closeVictoryVideo()">✕ 닫기</button>
@@ -35,7 +35,12 @@ function showVictoryVideo(winner) {
     // 영상 로드 및 재생
     const video = document.getElementById('victoryVideo');
     video.load();
-    video.play().catch(e => console.log('Auto-play blocked:', e));
+    video.play().catch(e => {
+        console.log('Auto-play blocked:', e);
+        // Retry muted if autoplay blocked
+        video.muted = true;
+        video.play().catch(e2 => console.log('Still blocked:', e2));
+    });
 
     // 영상 종료 시 자동 닫기
     video.addEventListener('ended', () => {
