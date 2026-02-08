@@ -425,3 +425,77 @@ body {
         font-size: 1.2rem;
     }
 }
+
+/* 다크모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ac-green: #8FD988;
+        --ac-cream: #2a2a3e;
+        --ac-brown: #E8D5A3;
+        --ac-wood: #6B5344;
+        --ac-sky: #5B9BD5;
+    }
+
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+
+    .player {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .instructions-card {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .round-info, .turn-info {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .quiz-card {
+        background: #3a3a4e;
+        border-color: #6B5344;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .answer-btn {
+        border-color: #6B5344;
+    }
+
+    .o-btn {
+        background: linear-gradient(135deg, #6BD87C, #5BC86F);
+    }
+
+    .x-btn {
+        background: linear-gradient(135deg, #FF9AAD, #E85A7D);
+    }
+
+    .feedback {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .victory-content {
+        background: #2a2a3e;
+        border-color: #6B5344;
+    }
+
+    .home-btn, .restart-btn {
+        background: #3a3a4e;
+        border-color: #6B5344;
+        color: #E8D5A3;
+    }
+
+    .play-again-btn {
+        background: #8FD988;
+        border-color: #4a3a2e;
+    }
+
+    .home-btn-modal {
+        background: #6B5344;
+        border-color: #4a3a2e;
+    }
+}

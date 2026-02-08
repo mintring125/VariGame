@@ -244,10 +244,10 @@ function endGame() {
 
     if (scores.celeste > scores.sally) {
         winnerText = '🎉 부엉이 승리! 🎉';
-        winnerImg = 'celeste.png';
+        winnerImg = '../../assets/celeste.png';
     } else if (scores.sally > scores.celeste) {
         winnerText = '🎉 샐리 승리! 🎉';
-        winnerImg = 'sally.png';
+        winnerImg = '../../assets/sally.png';
     } else {
         winnerText = '🤝 무승부! 🤝';
         winnerImg = '';

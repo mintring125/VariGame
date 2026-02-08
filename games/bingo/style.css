@@ -359,3 +359,79 @@ body {
         font-size: 1.2em;
     }
 }
+
+/* 다크모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ac-green: #8FD988;
+        --ac-cream: #2a2a3e;
+        --ac-brown: #E8D5A3;
+        --ac-wood: #6B5344;
+    }
+
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+
+    .header {
+        background: #3a3a4e;
+    }
+
+    .info-card {
+        background: #3a3a4e;
+    }
+
+    .info-card p {
+        color: #a0a0b0;
+    }
+
+    .player-section {
+        background: #3a3a4e;
+    }
+
+    .player-avatar {
+        border-color: #6B5344;
+    }
+
+    .bingo-cell {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .bingo-cell.selected {
+        background: #4a3040;
+    }
+
+    .bingo-cell.bingo-line {
+        background: #8B7500;
+    }
+
+    .number-selector {
+        background: #3a3a4e;
+    }
+
+    .number-button {
+        background: #8FD988;
+    }
+
+    .number-button:hover:not(:disabled) {
+        background: #7BC96F;
+    }
+
+    .number-button:disabled {
+        background: #4a4a5e;
+        color: #6a6a7a;
+    }
+
+    .modal-content {
+        background: #2a2a3e;
+    }
+
+    .modal-content p {
+        color: #a0a0b0;
+    }
+
+    .play-again-button {
+        background: #8FD988;
+    }
+}

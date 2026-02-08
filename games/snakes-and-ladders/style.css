@@ -431,3 +431,71 @@ body {
         font-size: 2.5em;
     }
 }
+
+/* 다크모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ac-green: #8FD988;
+        --ac-cream: #2a2a3e;
+        --ac-brown: #E8D5A3;
+        --ac-wood: #6B5344;
+        --snake-red: #FF8A8A;
+        --ladder-green: #6BD87C;
+    }
+
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+
+    .game-info-card {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .player {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .player-avatar {
+        border-color: #6B5344;
+    }
+
+    .dice-area {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .dice {
+        background: #4a4a5e;
+        border-color: #6B5344;
+    }
+
+    .board {
+        background: #4a3a2e;
+        border-color: #6B5344;
+    }
+
+    .cell {
+        background: #3a3a4e;
+        border-color: #4a3a2e;
+    }
+
+    .cell-number {
+        color: #E8D5A3;
+    }
+
+    .home-btn, .restart-btn {
+        background: #6B5344;
+        color: #E8D5A3;
+    }
+
+    .victory-content {
+        background: #2a2a3e;
+        border-color: #6B5344;
+    }
+
+    .play-again-btn {
+        background: #8FD988;
+    }
+}

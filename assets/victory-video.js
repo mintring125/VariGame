@@ -1,8 +1,8 @@
 // 승리 동영상 표시 기능
 // 게임 승리 시 승자에 따라 춤추는 영상을 표시
 
-const CELESTE_VIDEO = '../../댄스_비디오_생성.mp4';  // 부옥이 영상
-const SALLY_VIDEO = '../../Dancing_Video_Generation.mp4';  // 샐리 영상
+const CELESTE_VIDEO = '../../owl_victory.mp4';  // 부옥이 영상
+const SALLY_VIDEO = '../../sally_victory.mp4';  // 샐리 영상
 
 // 승리 동영상 표시
 // winner: 'celeste' 또는 'sally'

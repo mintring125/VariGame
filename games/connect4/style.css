@@ -511,3 +511,42 @@ body {
         font-size: 1.5rem;
     }
 }
+
+/* 다크모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ac-green: #8FD988;
+        --ac-green-dark: #6BBF60;
+        --ac-cream: #2a2a3e;
+        --ac-brown: #E8D5A3;
+        --ac-wood: #6B5344;
+        --ac-wood-dark: #5a4538;
+        --board-blue: #1E50C8;
+        --board-blue-dark: #152C6B;
+    }
+
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+
+    .game-container {
+        background: #2a2a3e;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    }
+
+    .player-card {
+        background: #3a3a4e;
+    }
+
+    .board-frame {
+        background: var(--board-blue-dark);
+    }
+
+    .modal-content {
+        background: #2a2a3e;
+    }
+
+    .btn {
+        color: #E8D5A3;
+    }
+}

@@ -408,3 +408,73 @@ h1 {
         font-size: 3rem;
     }
 }
+
+/* 다크모드 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ac-green: #8FD988;
+        --ac-cream: #2a2a3e;
+        --ac-brown: #E8D5A3;
+        --ac-wood: #6B5344;
+    }
+
+    body {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    }
+
+    .info-card {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .treasure-info span {
+        background: #4a4a5e;
+        color: #E8D5A3;
+    }
+
+    .scoreboard {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .player img {
+        border-color: #6B5344;
+    }
+
+    .turn-indicator {
+        background: #8FD988;
+        color: #1a1a2e;
+    }
+
+    .game-board {
+        background: #3a3a4e;
+        border-color: #6B5344;
+    }
+
+    .tile {
+        background: #6B5344;
+        border-color: #4a3a2e;
+    }
+
+    .tile::before {
+        color: #3a3a4e;
+    }
+
+    .home-btn, .restart-btn {
+        background: #6B5344;
+        color: #E8D5A3;
+    }
+
+    .modal-content {
+        background: #2a2a3e;
+        border-color: #6B5344;
+    }
+
+    .play-again-btn {
+        background: #8FD988;
+    }
+
+    .home-btn-modal {
+        background: #6B5344;
+    }
+}
