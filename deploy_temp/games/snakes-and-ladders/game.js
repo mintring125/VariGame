@@ -122,6 +122,10 @@ function rollDice() {
             const diceValue = Math.floor(Math.random() * 6) + 1;
             diceFace.textContent = diceValue;
 
+            // 주사위 숫자 이모지로 표시
+            const diceEmojis = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+            diceFace.textContent = diceEmojis[diceValue] || diceValue;
+
             // 말 이동
             setTimeout(() => {
                 movePlayer(currentPlayer, diceValue);
@@ -219,11 +223,11 @@ function updateTurnInfo() {
     if (currentPlayer === 1) {
         player1Div.classList.add('active');
         player2Div.classList.remove('active');
-        turnInfo.textContent = '부엉이 셀레스트 차례';
+        turnInfo.textContent = '🦉 셀레스트 차례';
     } else {
         player1Div.classList.remove('active');
         player2Div.classList.add('active');
-        turnInfo.textContent = '다람쥐 샐리 차례';
+        turnInfo.textContent = '🐱 샐리 차례';
     }
 }
 
@@ -259,7 +263,7 @@ function restartGame() {
     document.getElementById('dice').querySelector('.dice-face').textContent = '?';
     showMessage('');
 
-    updatePlayerPieces();
+    createBoard();
     updateTurnInfo();
 
     document.getElementById('rollBtn').disabled = false;
