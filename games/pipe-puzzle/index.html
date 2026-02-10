@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔧 파이프 연결 🔧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../assets/victory-video.css">
+    <link rel="stylesheet" href="../../assets/fullscreen.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="leaf leaf-1">🍃</div>
+        <div class="leaf leaf-2">🌸</div>
+
+        <h1 class="title">🔧 파이프 연결 🔧</h1>
+
+        <div class="players-container">
+            <div class="player-card player1" id="player1Card">
+                <img src="../../assets/celeste.png" alt="부엉이" class="player-avatar">
+                <div class="player-name">부엉이</div>
+                <div class="player-goal">← 왼쪽에서 오른쪽으로 →</div>
+            </div>
+            <div class="player-card player2" id="player2Card">
+                <img src="../../assets/sally.png" alt="샐리" class="player-avatar">
+                <div class="player-name">샐리</div>
+                <div class="player-goal">↑ 위에서 아래로 ↓</div>
+            </div>
+        </div>
+
+        <div class="message-area" id="messageArea">부엉이가 먼저 시작합니다! 🦉</div>
+
+        <div class="board-wrapper">
+            <div class="source-marker source-left" title="부엉이 시작점"></div>
+            <div class="source-marker source-top" title="샐리 시작점"></div>
+            <div class="board" id="board"></div>
+            <div class="drain-marker drain-right" title="부엉이 도착점"></div>
+            <div class="drain-marker drain-bottom" title="샐리 도착점"></div>
+        </div>
+
+        <div class="button-container">
+            <a href="../../index.html" class="btn btn-home">🏠 홈으로</a>
+            <button class="btn btn-restart" onclick="initGame()">🔄 다시 시작</button>
+        </div>
+
+        <div class="rules-card">
+            <h3>📖 게임 방법</h3>
+            <p>파이프를 클릭해서 돌려 길을 연결하세요!<br>부엉이는 왼→오, 샐리는 위→아래로 연결하면 승리!</p>
+        </div>
+    </div>
+
+    <div class="modal" id="gameOverModal">
+        <div class="modal-content">
+            <div class="confetti-container" id="confettiContainer"></div>
+            <img id="winnerAvatar" class="winner-avatar" src="" alt="승자">
+            <h2 id="winnerText" class="winner-text"></h2>
+            <p id="finalScore" class="final-score"></p>
+            <button class="btn btn-close" onclick="closeModal()">닫기</button>
+            <button class="btn btn-restart" onclick="closeModal(); initGame();">다시 하기</button>
+        </div>
+    </div>
+
+    <script src="../../assets/victory-video.js"></script>
+    <script src="game.js"></script>
+    <script src="../../assets/fullscreen.js"></script>
+</body>
+</html>

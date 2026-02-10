@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧱 블록 맞추기 🧱</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../assets/victory-video.css">
+    <link rel="stylesheet" href="../../assets/fullscreen.css">
+</head>
+<body>
+    <div class="leaves">🍃</div>
+    <div class="leaves">🍃</div>
+    <div class="leaves">🍃</div>
+
+    <div class="game-container">
+        <h1 class="title">🧱 블록 맞추기 🧱</h1>
+
+        <div class="players">
+            <div class="player-card celeste-card" id="celesteCard">
+                <div class="player-avatar">
+                    <img src="../../assets/celeste.png" alt="부엉이">
+                </div>
+                <div class="player-name">부엉이</div>
+                <div class="score" id="celesteScore">0점</div>
+            </div>
+
+            <div class="player-card sally-card" id="sallyCard">
+                <div class="player-avatar">
+                    <img src="../../assets/sally.png" alt="샐리">
+                </div>
+                <div class="player-name">샐리</div>
+                <div class="score" id="sallyScore">0점</div>
+            </div>
+        </div>
+
+        <div class="message" id="message">부엉이 차례!</div>
+
+        <div class="game-board">
+            <div class="board-container">
+                <div id="board" class="board"></div>
+            </div>
+
+            <div class="side-panel">
+                <div class="preview-container">
+                    <h3>현재 블록</h3>
+                    <div id="preview" class="preview"></div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-rotate" onclick="rotatePiece()">🔄 돌리기</button>
+                    <button class="btn btn-pass" onclick="passTurn()">⏭️ 패스 (-5점)</button>
+                </div>
+
+                <div class="rules-card">
+                    <h3>📖 게임 방법</h3>
+                    <p>블록을 보드에 놓아 줄을 완성하세요!<br>가로나 세로 줄이 꽉 차면 점수를 얻어요!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="../../index.html" class="btn btn-home">🏠 홈으로</a>
+            <button class="btn btn-restart" onclick="initGame()">🔄 다시 시작</button>
+        </div>
+    </div>
+
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h2 id="winnerText">🎉 승리!</h2>
+            <div id="finalScores"></div>
+            <div class="modal-actions">
+                <a href="../../index.html" class="btn btn-home">🏠 홈으로</a>
+                <button class="btn btn-restart" onclick="closeModal(); initGame();">🎮 다시 하기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/victory-video.js"></script>
+    <script src="game.js"></script>
+    <script src="../../assets/fullscreen.js"></script>
+</body>
+</html>
