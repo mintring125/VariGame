@@ -122,27 +122,30 @@ body {
     margin-left: auto;
 }
 
-.mini-dice-area {
+/* ===== Dice Strip (separate row) ===== */
+.dice-strip {
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: center;
+    gap: 10px;
     flex-shrink: 0;
+    flex-wrap: wrap;
 }
 
-.mini-dice {
-    width: 42px;
-    height: 42px;
+.dice-box {
+    width: 55px;
+    height: 55px;
     background: white;
     border: 3px solid var(--ac-brown);
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
 }
 
-.mini-dice.rolling {
+.dice-box.rolling {
     animation: roll 0.5s ease-in-out;
 }
 
@@ -167,17 +170,18 @@ body {
 }
 
 .dice-face {
-    font-size: 1.5em;
+    font-size: 2.2em;
     color: var(--ac-brown);
     font-weight: bold;
+    line-height: 1;
 }
 
 .roll-btn {
     background: linear-gradient(145deg, var(--ac-green), #5BA85A);
     color: white;
     border: 2px solid var(--ac-brown);
-    padding: 8px 14px;
-    font-size: 0.95em;
+    padding: 10px 20px;
+    font-size: 1em;
     font-family: 'Jua', sans-serif;
     border-radius: 12px;
     cursor: pointer;
@@ -195,16 +199,6 @@ body {
 .roll-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-}
-
-/* ===== Status Bar ===== */
-.status-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-shrink: 0;
-    min-height: 22px;
 }
 
 .turn-info {

@@ -108,10 +108,14 @@ function rollDice() {
     rollBtn.disabled = true;
     dice.classList.add('rolling');
 
+    // 주사위 이모지
+    const diceEmojis = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+
     // 주사위 애니메이션
     let rollCount = 0;
     const rollInterval = setInterval(() => {
-        diceFace.textContent = Math.floor(Math.random() * 6) + 1;
+        const randVal = Math.floor(Math.random() * 6) + 1;
+        diceFace.textContent = diceEmojis[randVal];
         rollCount++;
 
         if (rollCount >= 10) {
@@ -120,11 +124,7 @@ function rollDice() {
 
             // 최종 주사위 값
             const diceValue = Math.floor(Math.random() * 6) + 1;
-            diceFace.textContent = diceValue;
-
-            // 주사위 숫자 이모지로 표시
-            const diceEmojis = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
-            diceFace.textContent = diceEmojis[diceValue] || diceValue;
+            diceFace.textContent = diceEmojis[diceValue];
 
             // 말 이동
             setTimeout(() => {

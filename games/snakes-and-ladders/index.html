@@ -20,19 +20,13 @@
         <button class="icon-btn" onclick="restartGame()">🔄</button>
     </div>
 
-    <!-- Compact control strip: players + dice inline -->
+    <!-- Compact control strip: players inline -->
     <div class="control-strip">
         <div class="mini-player active" id="player1">
             <img src="../../assets/celeste.png" alt="부엉이" class="mini-avatar">
             <span class="mini-name">셀레스트</span>
             <span class="mini-pos" id="pos1">1</span>
         </div>
-
-        <div class="mini-dice-area">
-            <div class="mini-dice" id="dice"><span class="dice-face">?</span></div>
-            <button class="roll-btn" id="rollBtn" onclick="rollDice()">🎲 굴리기</button>
-        </div>
-
         <div class="mini-player" id="player2">
             <img src="../../assets/sally.png" alt="샐리" class="mini-avatar">
             <span class="mini-name">샐리</span>
@@ -40,8 +34,10 @@
         </div>
     </div>
 
-    <!-- Status message -->
-    <div class="status-bar">
+    <!-- Dice row -->
+    <div class="dice-strip">
+        <div class="dice-box" id="dice"><span class="dice-face">🎲</span></div>
+        <button class="roll-btn" id="rollBtn" onclick="rollDice()">주사위 굴리기</button>
         <span class="turn-info" id="turnInfo">부엉이 셀레스트 차례</span>
         <span class="message" id="message"></span>
     </div>
